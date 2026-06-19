@@ -1,0 +1,55 @@
+{
+  "project": "DexHand Lab",
+  "policy_type": "heuristic_contact_aware_dexterous_controller",
+  "perception": "simulation-native object pose perception from MuJoCo state",
+  "learned_policy": false,
+  "camera_vision": false,
+  "hybrid_carry_used": true,
+  "hybrid_carry_condition": "only after stable_grasp_verified and required finger contacts are active",
+  "no_snap_policy": {
+    "object_moves_before_stability_verify": false,
+    "attach_before_verification_allowed": false,
+    "relative_transform_preserved_at_attach": true,
+    "instant_recenter_to_palm": false
+  },
+  "controller_pipeline": [
+    "RESET",
+    "SHOW_HAND_OPEN_CLOSE",
+    "OBJECT_CLASSIFY",
+    "GRASP_REFERENCE_SELECT",
+    "HAND_PRESHAPE",
+    "APPROACH_OBJECT",
+    "CONTACT_SEEK",
+    "SOFT_CLOSE",
+    "CONTACT_ESTIMATION",
+    "STABILITY_VERIFY",
+    "SECURE_GRASP",
+    "HOLD_STABLE",
+    "IN_HAND_ROTATION",
+    "SLIP_MONITOR",
+    "SLIP_RECOVERY",
+    "TRIPOD_TOOL_PICK",
+    "CHECKPOINT_TOUCH",
+    "INDEX_BUTTON_PRESS",
+    "CONTROLLED_RELEASE",
+    "FINAL_REPORT",
+    "FINISH"
+  ],
+  "grasp_primitives": [
+    "CAPSULE_CENTER_SUPPORT_GRASP",
+    "CONTROLLED_RELEASE",
+    "INDEX_FINGERTIP_PRESS",
+    "IN_HAND_ROTATION",
+    "LATERAL_CYLINDER_BODY_GRASP",
+    "OPPOSING_FACE_CUBE_GRASP",
+    "SHOW_HAND",
+    "SLIP_RECOVERY_REGRASP",
+    "SPHERICAL_ENCLOSURE_GRASP",
+    "TRIPOD_PRECISION_GRASP"
+  ],
+  "limitations": [
+    "The policy is not trained with reinforcement learning.",
+    "Contact measurements are reproducible controller/MuJoCo state proxies.",
+    "Hybrid carry and rotation are used for visual stability after verification."
+  ]
+}

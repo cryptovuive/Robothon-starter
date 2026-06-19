@@ -1,0 +1,52 @@
+{
+  "project_name": "DexHand Lab",
+  "submission_folder": "submissions/dexhand_lab",
+  "main_command": "python submissions/dexhand_lab/run_demo.py",
+  "evaluation_command": "python submissions/dexhand_lab/run_demo.py --episodes 3 --seed 42 --no-video --difficulty medium",
+  "stress_eval_command": "python submissions/dexhand_lab/run_stress_eval.py --seeds 32",
+  "validation_command": "python submissions/dexhand_lab/validate_submission.py",
+  "robot_platform": "Human-like 5-finger MuJoCo hand built from stable primitives",
+  "primary_files": [
+    "run_demo.py",
+    "scene.xml",
+    "human_grasp_library.py",
+    "object_classifier.py",
+    "dexhand_controller.py",
+    "run_stress_eval.py",
+    "validate_submission.py",
+    "README.md",
+    "JUDGE_BRIEF.md",
+    "rubric_scorecard.json"
+  ],
+  "generated_outputs": [
+    "outputs/demo.mp4",
+    "outputs/summary.json",
+    "outputs/trajectory.json",
+    "outputs/contact_timeline.json",
+    "outputs/final_report.txt",
+    "outputs/policy_card.json",
+    "outputs/sensor_manifest.json",
+    "outputs/stress_eval.json",
+    "outputs/baseline_vs_feedback.json",
+    "outputs/narration.srt",
+    "media/keyframes.png",
+    "outputs/episodes/episode_000/trajectory.json",
+    "outputs/episodes/episode_000/metadata.json"
+  ],
+  "core_claims": {
+    "five_finger_hand": true,
+    "thumb_opposition": true,
+    "object_specific_grasps": true,
+    "no_snap_verified_grasp": true,
+    "in_hand_rotation": true,
+    "stylus_tripod_grasp": true,
+    "index_only_button_press": true,
+    "stress_evaluation": true
+  },
+  "limitations": [
+    "No learned policy weights are included.",
+    "No real camera perception is claimed.",
+    "No real-world deployment is claimed.",
+    "Hybrid object carry is used only after stable grasp verification."
+  ]
+}

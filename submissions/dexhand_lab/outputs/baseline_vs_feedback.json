@@ -1,0 +1,17 @@
+{
+  "baseline_controller": "scripted open-loop preshape baseline",
+  "feedback_controller": "contact-aware verified grasp controller",
+  "seeds": 32,
+  "baseline_success_rate": 0.59375,
+  "feedback_success_rate": 1.0,
+  "sphere_grasp_success_rate": 1.0,
+  "cube_grasp_success_rate": 1.0,
+  "cylinder_grasp_success_rate": 1.0,
+  "rotation_success_rate": 1.0,
+  "slip_recovery_success_rate": 0.8125,
+  "object_drop_count": 0,
+  "average_active_fingers": 5.0,
+  "average_multi_side_contact_score": 0.94929,
+  "average_rotation_error_deg": 2.26519,
+  "object_snap_events": 0
+}

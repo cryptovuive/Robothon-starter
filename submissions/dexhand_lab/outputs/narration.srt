@@ -1,0 +1,23 @@
+1
+00:00:00,000 --> 00:00:08,000
+DexHand Lab opens the human-like five-finger hand and shows thumb opposition.
+
+2
+00:00:08,000 --> 00:00:24,000
+The hand forms a spherical enclosure grasp with thumb opposition and lower finger support.
+
+3
+00:00:24,000 --> 00:00:40,000
+The cube is held by opposing face contacts rather than one face or a corner grasp.
+
+4
+00:00:40,000 --> 00:01:00,000
+The cylinder is grasped around the side of the body and rotated in-hand.
+
+5
+00:01:00,000 --> 00:01:18,000
+The stylus is picked with a thumb-index-middle tripod grasp and used to touch the checkpoint.
+
+6
+00:01:18,000 --> 00:01:30,000
+The button is pressed with the index fingertip only, then the hand returns to the final report pose.

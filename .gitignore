@@ -1,4 +1,8 @@
 outputs/
+!submissions/ff-robolab-data-collector/outputs/
+!submissions/ff-robolab-data-collector/outputs/**
+!submissions/dexhand_lab/outputs/
+!submissions/dexhand_lab/outputs/**
 __pycache__/
 *.pyc
 .DS_Store

@@ -1,0 +1,225 @@
+<mujoco model="dexhand_lab">
+  <compiler angle="degree" autolimits="true"/>
+  <option timestep="0.01" integrator="RK4" gravity="0 0 -9.81"/>
+
+  <visual>
+    <global offwidth="1280" offheight="720"/>
+    <quality shadowsize="2048"/>
+  </visual>
+
+  <default>
+    <geom friction="1.0 0.04 0.004" solimp="0.9 0.95 0.001" solref="0.02 1"/>
+    <joint damping="5" armature="0.01"/>
+  </default>
+
+  <asset>
+    <texture name="grid_tex" type="2d" builtin="checker" rgb1="0.84 0.86 0.88" rgb2="0.68 0.72 0.76" width="256" height="256"/>
+    <material name="floor_mat" texture="grid_tex" texrepeat="5 5" rgba="0.84 0.86 0.88 1"/>
+    <material name="table_mat" rgba="0.46 0.43 0.38 1"/>
+    <material name="palm_mat" rgba="0.13 0.22 0.30 1"/>
+    <material name="finger_mat" rgba="0.78 0.84 0.88 1"/>
+    <material name="thumb_mat" rgba="0.92 0.72 0.50 1"/>
+    <material name="finger_joint_mat" rgba="0.10 0.12 0.14 1"/>
+    <material name="pad_mat" rgba="0.03 0.035 0.04 1"/>
+    <material name="sphere_mat" rgba="0.10 0.62 0.95 1"/>
+    <material name="cube_mat" rgba="0.92 0.16 0.10 1"/>
+    <material name="cylinder_mat" rgba="0.14 0.72 0.32 1"/>
+    <material name="stylus_mat" rgba="0.95 0.78 0.20 1"/>
+    <material name="button_mat" rgba="0.06 0.78 0.24 1"/>
+    <material name="checkpoint_mat" rgba="0.58 0.20 0.88 1"/>
+  </asset>
+
+  <worldbody>
+    <geom name="floor" type="plane" size="2.0 2.0 0.05" material="floor_mat"/>
+    <light name="key_light" pos="0.0 -1.2 1.8" dir="0.0 0.4 -1" diffuse="0.95 0.95 0.92"/>
+    <light name="fill_light" pos="-1.0 1.1 1.5" dir="0.5 -0.4 -1" diffuse="0.35 0.40 0.48"/>
+
+    <camera name="front_camera" pos="0.36 -0.84 0.70" xyaxes="0.94 0.34 0 -0.16 0.45 0.88" fovy="36"/>
+    <camera name="top_camera" pos="0.0 0.0 1.32" xyaxes="1 0 0 0 1 0" fovy="42"/>
+
+    <body name="table" pos="0 0 0.36">
+      <geom name="table_top" type="box" size="0.55 0.42 0.035" material="table_mat"/>
+      <geom name="table_edge_front" type="box" pos="0 -0.43 0.045" size="0.55 0.012 0.014" rgba="0.16 0.17 0.18 1"/>
+      <geom name="table_edge_back" type="box" pos="0 0.43 0.045" size="0.55 0.012 0.014" rgba="0.16 0.17 0.18 1"/>
+      <geom name="table_edge_left" type="box" pos="-0.56 0 0.045" size="0.012 0.42 0.014" rgba="0.16 0.17 0.18 1"/>
+      <geom name="table_edge_right" type="box" pos="0.56 0 0.045" size="0.012 0.42 0.014" rgba="0.16 0.17 0.18 1"/>
+    </body>
+
+    <body name="sphere_object" pos="-0.22 -0.01 0.447">
+      <freejoint name="sphere_object_joint"/>
+      <geom name="sphere_object_geom" type="sphere" size="0.052" material="sphere_mat" mass="0.060"/>
+    </body>
+
+    <body name="cube_object" pos="0.00 -0.01 0.440">
+      <freejoint name="cube_object_joint"/>
+      <geom name="cube_object_geom" type="box" size="0.045 0.045 0.045" material="cube_mat" mass="0.065"/>
+    </body>
+
+    <body name="cylinder_object" pos="0.22 -0.01 0.438">
+      <freejoint name="cylinder_object_joint"/>
+      <geom name="cylinder_object_geom" type="cylinder" euler="90 0 0" size="0.043 0.060" material="cylinder_mat" mass="0.065"/>
+    </body>
+
+    <body name="stylus_tool" pos="-0.28 0.28 0.425">
+      <freejoint name="stylus_tool_joint"/>
+      <geom name="stylus_body_geom" type="capsule" fromto="-0.055 0 0 0.055 0 0" size="0.008" material="stylus_mat" mass="0.018"/>
+      <geom name="stylus_tip_geom" type="sphere" pos="0.070 0 0" size="0.010" material="checkpoint_mat"/>
+      <site name="stylus_tip_site" pos="0.082 0 0" size="0.006" rgba="0.7 0.3 1 1"/>
+    </body>
+
+    <body name="button_station" pos="0.12 0.29 0.405">
+      <geom name="button_base_geom" type="box" size="0.060 0.050 0.010" rgba="0.10 0.11 0.12 1"/>
+      <body name="button_plunger" pos="0 0 0.024">
+        <joint name="button_joint" type="slide" axis="0 0 1" range="-0.018 0.002" damping="6"/>
+        <geom name="button_geom" type="cylinder" size="0.032 0.012" material="button_mat"/>
+        <site name="button_site" pos="0 0 0.018" size="0.010" rgba="0.2 1.0 0.35 1"/>
+      </body>
+    </body>
+
+    <body name="checkpoint_target" pos="-0.02 0.31 0.405">
+      <geom name="checkpoint_base_geom" type="box" size="0.046 0.046 0.009" rgba="0.10 0.11 0.12 1"/>
+      <geom name="checkpoint_geom" type="cylinder" pos="0 0 0.020" size="0.024 0.008" material="checkpoint_mat"/>
+      <site name="checkpoint_site" pos="0 0 0.038" size="0.010" rgba="0.7 0.3 1 1"/>
+    </body>
+
+    <body name="palm_body" pos="0 0 0.620">
+      <joint name="hand_x" type="slide" axis="1 0 0" range="-0.40 0.40" damping="8"/>
+      <joint name="hand_y" type="slide" axis="0 1 0" range="-0.22 0.34" damping="8"/>
+      <joint name="hand_z" type="slide" axis="0 0 1" range="-0.13 0.06" damping="8"/>
+      <joint name="wrist_yaw" type="hinge" axis="0 0 1" range="-35 35" damping="5"/>
+      <joint name="wrist_pitch" type="hinge" axis="1 0 0" range="-25 25" damping="5"/>
+      <joint name="wrist_roll" type="hinge" axis="0 1 0" range="-25 25" damping="5"/>
+      <geom name="wrist_mount_geom" type="cylinder" pos="0 -0.060 0.010" euler="90 0 0" size="0.042 0.045" material="finger_joint_mat" contype="0" conaffinity="0"/>
+      <geom name="palm_geom" type="box" pos="0 0 0" size="0.085 0.058 0.022" material="palm_mat" contype="0" conaffinity="0"/>
+      <geom name="index_metacarpal_rail" type="capsule" fromto="-0.050 -0.028 0.025 -0.045 0.055 0.024" size="0.004" material="finger_mat" contype="0" conaffinity="0"/>
+      <geom name="middle_metacarpal_rail" type="capsule" fromto="-0.018 -0.032 0.026 -0.015 0.060 0.025" size="0.0045" material="finger_mat" contype="0" conaffinity="0"/>
+      <geom name="ring_metacarpal_rail" type="capsule" fromto="0.018 -0.030 0.025 0.018 0.058 0.024" size="0.004" material="finger_mat" contype="0" conaffinity="0"/>
+      <geom name="little_metacarpal_rail" type="capsule" fromto="0.050 -0.024 0.023 0.050 0.052 0.022" size="0.0038" material="finger_mat" contype="0" conaffinity="0"/>
+      <site name="palm_center_site" pos="0 0.045 -0.020" size="0.008" rgba="1 0.9 0.2 1"/>
+
+      <body name="thumb_metacarpal" pos="-0.075 0.018 -0.004" euler="0 0 -48">
+        <joint name="thumb_cmc_opposition" type="hinge" axis="-1 0 0" range="0 85" damping="4"/>
+        <joint name="thumb_cmc_abduction" type="hinge" axis="0 0 1" range="-10 45" damping="4"/>
+        <geom name="thumb_cmc_joint_geom" type="sphere" size="0.016" material="thumb_mat" contype="0" conaffinity="0"/>
+        <geom name="thumb_proximal_geom" type="capsule" fromto="0 0 0 0 0.045 0" size="0.014" material="thumb_mat" contype="0" conaffinity="0"/>
+        <body name="thumb_proximal" pos="0 0.045 0">
+          <joint name="thumb_mcp_flexion" type="hinge" axis="-1 0 0" range="0 85" damping="4"/>
+          <geom name="thumb_mcp_joint_geom" type="sphere" size="0.014" material="thumb_mat" contype="0" conaffinity="0"/>
+          <geom name="thumb_middle_geom" type="capsule" fromto="0 0 0 0 0.039 0" size="0.013" material="thumb_mat" contype="0" conaffinity="0"/>
+          <body name="thumb_distal" pos="0 0.039 0">
+            <joint name="thumb_ip_flexion" type="hinge" axis="-1 0 0" range="0 80" damping="4"/>
+            <geom name="thumb_ip_joint_geom" type="sphere" size="0.012" material="thumb_mat" contype="0" conaffinity="0"/>
+            <geom name="thumb_distal_geom" type="capsule" fromto="0 0 0 0 0.028 0" size="0.012" material="thumb_mat" contype="0" conaffinity="0"/>
+            <geom name="thumb_tip_pad" type="sphere" pos="0 0.032 -0.004" size="0.019" material="thumb_mat" contype="1" conaffinity="1"/>
+            <site name="thumb_tip_site" pos="0 0.034 -0.004" size="0.006" rgba="1 1 1 1"/>
+          </body>
+        </body>
+      </body>
+
+      <body name="index_metacarpal" pos="-0.045 0.058 0.000">
+        <joint name="index_mcp_abduction" type="hinge" axis="0 0 1" range="-16 16" damping="4"/>
+        <joint name="index_mcp_flexion" type="hinge" axis="-1 0 0" range="0 95" damping="4"/>
+        <geom name="index_mcp_joint_geom" type="sphere" size="0.013" material="finger_joint_mat" contype="0" conaffinity="0"/>
+        <geom name="index_proximal_geom" type="capsule" fromto="0 0 0 0 0.065 0" size="0.0115" material="finger_mat" contype="0" conaffinity="0"/>
+        <body name="index_middle" pos="0 0.065 0">
+          <joint name="index_pip_flexion" type="hinge" axis="-1 0 0" range="0 100" damping="4"/>
+          <geom name="index_pip_joint_geom" type="sphere" size="0.011" material="finger_joint_mat" contype="0" conaffinity="0"/>
+          <geom name="index_middle_geom" type="capsule" fromto="0 0 0 0 0.046 0" size="0.0105" material="finger_mat" contype="0" conaffinity="0"/>
+          <body name="index_distal" pos="0 0.046 0">
+            <joint name="index_dip_flexion" type="hinge" axis="-1 0 0" range="0 85" damping="4"/>
+            <geom name="index_dip_joint_geom" type="sphere" size="0.0095" material="finger_joint_mat" contype="0" conaffinity="0"/>
+            <geom name="index_distal_geom" type="capsule" fromto="0 0 0 0 0.033 0" size="0.0095" material="finger_mat" contype="0" conaffinity="0"/>
+            <geom name="index_tip_pad" type="sphere" pos="0 0.037 -0.004" size="0.017" material="pad_mat" contype="1" conaffinity="1"/>
+            <site name="index_tip_site" pos="0 0.039 -0.004" size="0.006" rgba="1 1 1 1"/>
+          </body>
+        </body>
+      </body>
+
+      <body name="middle_metacarpal" pos="-0.015 0.062 0.000">
+        <joint name="middle_mcp_abduction" type="hinge" axis="0 0 1" range="-12 12" damping="4"/>
+        <joint name="middle_mcp_flexion" type="hinge" axis="-1 0 0" range="0 100" damping="4"/>
+        <geom name="middle_mcp_joint_geom" type="sphere" size="0.0135" material="finger_joint_mat" contype="0" conaffinity="0"/>
+        <geom name="middle_proximal_geom" type="capsule" fromto="0 0 0 0 0.072 0" size="0.012" material="finger_mat" contype="0" conaffinity="0"/>
+        <body name="middle_middle" pos="0 0.072 0">
+          <joint name="middle_pip_flexion" type="hinge" axis="-1 0 0" range="0 105" damping="4"/>
+          <geom name="middle_pip_joint_geom" type="sphere" size="0.0115" material="finger_joint_mat" contype="0" conaffinity="0"/>
+          <geom name="middle_middle_geom" type="capsule" fromto="0 0 0 0 0.051 0" size="0.011" material="finger_mat" contype="0" conaffinity="0"/>
+          <body name="middle_distal" pos="0 0.051 0">
+            <joint name="middle_dip_flexion" type="hinge" axis="-1 0 0" range="0 90" damping="4"/>
+            <geom name="middle_dip_joint_geom" type="sphere" size="0.010" material="finger_joint_mat" contype="0" conaffinity="0"/>
+            <geom name="middle_distal_geom" type="capsule" fromto="0 0 0 0 0.037 0" size="0.010" material="finger_mat" contype="0" conaffinity="0"/>
+            <geom name="middle_tip_pad" type="sphere" pos="0 0.041 -0.004" size="0.0175" material="pad_mat" contype="1" conaffinity="1"/>
+            <site name="middle_tip_site" pos="0 0.043 -0.004" size="0.006" rgba="1 1 1 1"/>
+          </body>
+        </body>
+      </body>
+
+      <body name="ring_metacarpal" pos="0.018 0.060 0.000">
+        <joint name="ring_mcp_abduction" type="hinge" axis="0 0 1" range="-12 14" damping="4"/>
+        <joint name="ring_mcp_flexion" type="hinge" axis="-1 0 0" range="0 98" damping="4"/>
+        <geom name="ring_mcp_joint_geom" type="sphere" size="0.013" material="finger_joint_mat" contype="0" conaffinity="0"/>
+        <geom name="ring_proximal_geom" type="capsule" fromto="0 0 0 0 0.067 0" size="0.0115" material="finger_mat" contype="0" conaffinity="0"/>
+        <body name="ring_middle" pos="0 0.067 0">
+          <joint name="ring_pip_flexion" type="hinge" axis="-1 0 0" range="0 102" damping="4"/>
+          <geom name="ring_pip_joint_geom" type="sphere" size="0.011" material="finger_joint_mat" contype="0" conaffinity="0"/>
+          <geom name="ring_middle_geom" type="capsule" fromto="0 0 0 0 0.048 0" size="0.0105" material="finger_mat" contype="0" conaffinity="0"/>
+          <body name="ring_distal" pos="0 0.048 0">
+            <joint name="ring_dip_flexion" type="hinge" axis="-1 0 0" range="0 88" damping="4"/>
+            <geom name="ring_dip_joint_geom" type="sphere" size="0.0095" material="finger_joint_mat" contype="0" conaffinity="0"/>
+            <geom name="ring_distal_geom" type="capsule" fromto="0 0 0 0 0.034 0" size="0.0095" material="finger_mat" contype="0" conaffinity="0"/>
+            <geom name="ring_tip_pad" type="sphere" pos="0 0.038 -0.004" size="0.017" material="pad_mat" contype="1" conaffinity="1"/>
+            <site name="ring_tip_site" pos="0 0.040 -0.004" size="0.006" rgba="1 1 1 1"/>
+          </body>
+        </body>
+      </body>
+
+      <body name="little_metacarpal" pos="0.050 0.054 0.000" euler="0 0 6">
+        <joint name="little_mcp_abduction" type="hinge" axis="0 0 1" range="-14 18" damping="4"/>
+        <joint name="little_mcp_flexion" type="hinge" axis="-1 0 0" range="0 96" damping="4"/>
+        <geom name="little_mcp_joint_geom" type="sphere" size="0.012" material="finger_joint_mat" contype="0" conaffinity="0"/>
+        <geom name="little_proximal_geom" type="capsule" fromto="0 0 0 0 0.054 0" size="0.0105" material="finger_mat" contype="0" conaffinity="0"/>
+        <body name="little_middle" pos="0 0.054 0">
+          <joint name="little_pip_flexion" type="hinge" axis="-1 0 0" range="0 100" damping="4"/>
+          <geom name="little_pip_joint_geom" type="sphere" size="0.010" material="finger_joint_mat" contype="0" conaffinity="0"/>
+          <geom name="little_middle_geom" type="capsule" fromto="0 0 0 0 0.038 0" size="0.0095" material="finger_mat" contype="0" conaffinity="0"/>
+          <body name="little_distal" pos="0 0.038 0">
+            <joint name="little_dip_flexion" type="hinge" axis="-1 0 0" range="0 85" damping="4"/>
+            <geom name="little_dip_joint_geom" type="sphere" size="0.0085" material="finger_joint_mat" contype="0" conaffinity="0"/>
+            <geom name="little_distal_geom" type="capsule" fromto="0 0 0 0 0.028 0" size="0.0085" material="finger_mat" contype="0" conaffinity="0"/>
+            <geom name="little_tip_pad" type="sphere" pos="0 0.032 -0.004" size="0.016" material="pad_mat" contype="1" conaffinity="1"/>
+            <site name="little_tip_site" pos="0 0.034 -0.004" size="0.006" rgba="1 1 1 1"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <position name="act_hand_x" joint="hand_x" kp="160" ctrlrange="-0.40 0.40"/>
+    <position name="act_hand_y" joint="hand_y" kp="160" ctrlrange="-0.22 0.34"/>
+    <position name="act_hand_z" joint="hand_z" kp="160" ctrlrange="-0.13 0.06"/>
+    <position name="act_wrist_yaw" joint="wrist_yaw" kp="80" ctrlrange="-0.6109 0.6109"/>
+    <position name="act_wrist_pitch" joint="wrist_pitch" kp="80" ctrlrange="-0.4363 0.4363"/>
+    <position name="act_wrist_roll" joint="wrist_roll" kp="80" ctrlrange="-0.4363 0.4363"/>
+    <position name="act_thumb_cmc_opposition" joint="thumb_cmc_opposition" kp="65" ctrlrange="0 1.4835"/>
+    <position name="act_thumb_cmc_abduction" joint="thumb_cmc_abduction" kp="65" ctrlrange="-0.1745 0.7854"/>
+    <position name="act_thumb_mcp_flexion" joint="thumb_mcp_flexion" kp="65" ctrlrange="0 1.4835"/>
+    <position name="act_thumb_ip_flexion" joint="thumb_ip_flexion" kp="65" ctrlrange="0 1.3963"/>
+    <position name="act_index_mcp_abduction" joint="index_mcp_abduction" kp="65" ctrlrange="-0.2793 0.2793"/>
+    <position name="act_index_mcp_flexion" joint="index_mcp_flexion" kp="65" ctrlrange="0 1.6581"/>
+    <position name="act_index_pip_flexion" joint="index_pip_flexion" kp="65" ctrlrange="0 1.7453"/>
+    <position name="act_index_dip_flexion" joint="index_dip_flexion" kp="65" ctrlrange="0 1.4835"/>
+    <position name="act_middle_mcp_abduction" joint="middle_mcp_abduction" kp="65" ctrlrange="-0.2094 0.2094"/>
+    <position name="act_middle_mcp_flexion" joint="middle_mcp_flexion" kp="65" ctrlrange="0 1.7453"/>
+    <position name="act_middle_pip_flexion" joint="middle_pip_flexion" kp="65" ctrlrange="0 1.8326"/>
+    <position name="act_middle_dip_flexion" joint="middle_dip_flexion" kp="65" ctrlrange="0 1.5708"/>
+    <position name="act_ring_mcp_abduction" joint="ring_mcp_abduction" kp="65" ctrlrange="-0.2094 0.2443"/>
+    <position name="act_ring_mcp_flexion" joint="ring_mcp_flexion" kp="65" ctrlrange="0 1.7104"/>
+    <position name="act_ring_pip_flexion" joint="ring_pip_flexion" kp="65" ctrlrange="0 1.7802"/>
+    <position name="act_ring_dip_flexion" joint="ring_dip_flexion" kp="65" ctrlrange="0 1.5359"/>
+    <position name="act_little_mcp_abduction" joint="little_mcp_abduction" kp="65" ctrlrange="-0.2443 0.3142"/>
+    <position name="act_little_mcp_flexion" joint="little_mcp_flexion" kp="65" ctrlrange="0 1.6755"/>
+    <position name="act_little_pip_flexion" joint="little_pip_flexion" kp="65" ctrlrange="0 1.7453"/>
+    <position name="act_little_dip_flexion" joint="little_dip_flexion" kp="65" ctrlrange="0 1.4835"/>
+  </actuator>
+</mujoco>

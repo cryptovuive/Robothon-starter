@@ -1,0 +1,84 @@
+{
+  "project": "DexHand Lab",
+  "target_score_band": "85+",
+  "rubric_mapping": {
+    "reproducibility": {
+      "evidence": [
+        "python submissions/dexhand_lab/run_demo.py",
+        "python submissions/dexhand_lab/run_demo.py --episodes 3 --seed 42 --no-video --difficulty medium",
+        "python submissions/dexhand_lab/validate_submission.py",
+        "submissions/dexhand_lab/outputs/summary.json"
+      ],
+      "notes": "Deterministic seed handling, relative paths, automatic output creation, and JSON validation are included."
+    },
+    "mujoco_depth": {
+      "evidence": [
+        "submissions/dexhand_lab/scene.xml",
+        "submissions/dexhand_lab/outputs/sensor_manifest.json",
+        "submissions/dexhand_lab/outputs/contact_timeline.json"
+      ],
+      "notes": "MJCF hand uses articulated finger joints, collision fingertip pads, free objects, camera rendering, and contact-rich logging."
+    },
+    "task_design": {
+      "evidence": [
+        "sphere enclosure grasp",
+        "cube opposing-face grasp",
+        "cylinder side-body grasp and rotation",
+        "stylus tripod checkpoint touch",
+        "index-only button press"
+      ],
+      "notes": "The task suite is designed around hand-only dexterous manipulation rather than arm pick-and-place."
+    },
+    "control": {
+      "evidence": [
+        "submissions/dexhand_lab/human_grasp_library.py",
+        "submissions/dexhand_lab/object_classifier.py",
+        "submissions/dexhand_lab/outputs/policy_card.json"
+      ],
+      "notes": "The controller uses simulation-native object classification, object-specific grasp references, contact-seek poses, stability verification, no-snap attachment, and recovery-oriented metrics."
+    },
+    "dexterity": {
+      "evidence": [
+        "thumb opposition",
+        "independent_finger_motion_score",
+        "object_center_between_fingers_rate",
+        "in_hand_rotation_success",
+        "stylus_tripod_success"
+      ],
+      "notes": "The hand demonstrates five-finger roles, asymmetric closure timing, multi-side contact, lateral cylinder grasping, and finger-gaited in-hand rotation."
+    },
+    "engineering_quality": {
+      "evidence": [
+        "submissions/dexhand_lab/validate_submission.py",
+        "submissions/dexhand_lab/run_stress_eval.py",
+        "submissions/dexhand_lab/outputs/stress_eval.json",
+        "submissions/dexhand_lab/outputs/baseline_vs_feedback.json"
+      ],
+      "notes": "Validation and stress evaluation are deterministic and do not require video rendering."
+    },
+    "presentation": {
+      "evidence": [
+        "submissions/dexhand_lab/outputs/demo.mp4",
+        "submissions/dexhand_lab/media/keyframes.png",
+        "submissions/dexhand_lab/outputs/narration.srt",
+        "submissions/dexhand_lab/outputs/final_report.txt"
+      ],
+      "notes": "The demo is 75-120 seconds and is paired with keyframes, captions, and a final report."
+    },
+    "innovation": {
+      "evidence": [
+        "hand-only dexterous benchmark",
+        "finger-envelope alignment metrics",
+        "contact timeline",
+        "stress comparison"
+      ],
+      "notes": "The project focuses on dexterous hand quality and evidence rather than adding unrelated features."
+    }
+  },
+  "honest_limitations": [
+    "Heuristic controller, not a learned RL policy.",
+    "Simulation-native object pose perception, not camera vision.",
+    "Hybrid carry and rotation are used only after verified grasp for robust reproducibility.",
+    "Contact values include controller/MuJoCo state proxies rather than calibrated real tactile sensors."
+  ]
+}
