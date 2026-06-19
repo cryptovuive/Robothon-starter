@@ -1616,7 +1616,11 @@ def prepare_output_dir(output_dir: Path, preserve_video: bool = False) -> None:
         shutil.rmtree(episodes_dir)
     episodes_dir.mkdir(parents=True, exist_ok=True)
     for stale_file in ("summary.json", "trajectory.json", "contact_timeline.json", "final_report.txt", "demo.mp4", "narration.srt"):
-        if preserve_video and stale_file in {"demo.mp4", "narration.srt"}:
+        # Keep existing media until replacements are successfully written. This prevents
+        # headless render failures from deleting the last valid judge-facing demo video.
+        if stale_file in {"demo.mp4", "narration.srt"} or (
+            preserve_video and stale_file in {"demo.mp4", "narration.srt"}
+        ):
             continue
         path = output_dir / stale_file
         if path.exists():
@@ -1625,11 +1629,21 @@ def prepare_output_dir(output_dir: Path, preserve_video: bool = False) -> None:
 
 def write_video(video_path: Path, frames: list[np.ndarray], fps: int) -> tuple[str | None, str | None]:
     if not frames:
+        if video_path.exists():
+            return portable_path(video_path), "No frames were rendered; preserved existing demo video."
         return None, "No frames were rendered for demo video."
+    temp_path = video_path.with_name(f"{video_path.stem}.tmp{video_path.suffix}")
     try:
-        iio.imwrite(video_path, np.asarray(frames), fps=fps, codec="libx264")
+        if temp_path.exists():
+            temp_path.unlink()
+        iio.imwrite(temp_path, np.asarray(frames), fps=fps, codec="libx264")
+        temp_path.replace(video_path)
         return portable_path(video_path), None
     except Exception as exc:
+        if temp_path.exists():
+            temp_path.unlink()
+        if video_path.exists():
+            return portable_path(video_path), f"Video generation failed; preserved existing demo video: {exc}"
         return None, f"Video generation failed: {exc}"
 
 
