@@ -52,12 +52,20 @@
       "cylinder_object",
       "stylus_tool"
     ],
+    "cap_knob_pose": "body pose and hinge angle for cap_knob",
     "per_finger_contacts": [
       "thumb",
       "index",
       "middle",
       "ring",
       "little"
+    ],
+    "tactile_channels": [
+      "thumb_tip",
+      "index_tip",
+      "middle_tip",
+      "ring_tip",
+      "little_tip"
     ],
     "fingertip_sites": [
       "thumb_tip_site",
@@ -67,6 +75,7 @@
       "little_tip_site"
     ],
     "contact_timeline": "outputs/contact_timeline.json",
+    "tactile_taxels": "dataset/tactile_taxels.csv",
     "video_cameras": [
       "front_camera",
       "top_camera"
@@ -79,11 +88,20 @@
     "independent_finger_motion_score",
     "verified_grasp_before_attach_rate",
     "object_snap_events",
-    "rotation_error_deg"
+    "rotation_error_deg",
+    "cap_rotation_error_deg",
+    "friction_margin",
+    "shear_slip_proxy",
+    "load_hold_x",
+    "normal_force_proxy",
+    "shear_slip_proxy",
+    "friction_margin",
+    "contact_confidence"
   ],
   "not_included": [
     "real camera images used for perception",
     "real force-torque hardware measurements",
     "learned policy weights"
-  ]
+  ],
+  "contact_source": "mujoco_contact_parser_and_controller_pressure_proxy"
 }

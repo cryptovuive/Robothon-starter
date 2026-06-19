@@ -1,0 +1,305 @@
+{
+  "project": "DexHand Lab",
+  "joint_mapping": [
+    {
+      "joint_name": "thumb_cmc_opposition",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_thumb_opposition",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "thumb_cmc_abduction",
+      "simulated_range_rad": [
+        -0.32,
+        0.32
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_thumb_abduction",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "thumb_mcp_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_thumb_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "thumb_ip_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_thumb_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "index_mcp_abduction",
+      "simulated_range_rad": [
+        -0.32,
+        0.32
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_index_abduction",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "index_mcp_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_index_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "index_pip_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_index_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "index_dip_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_index_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "middle_mcp_abduction",
+      "simulated_range_rad": [
+        -0.32,
+        0.32
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_middle_abduction",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "middle_mcp_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_middle_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "middle_pip_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_middle_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "middle_dip_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_middle_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "ring_mcp_abduction",
+      "simulated_range_rad": [
+        -0.32,
+        0.32
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_ring_abduction",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "ring_mcp_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_ring_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "ring_pip_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_ring_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "ring_dip_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_ring_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "little_mcp_abduction",
+      "simulated_range_rad": [
+        -0.32,
+        0.32
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_little_abduction",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "little_mcp_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_little_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "little_pip_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_little_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    },
+    {
+      "joint_name": "little_dip_flexion",
+      "simulated_range_rad": [
+        0.0,
+        1.75
+      ],
+      "normalized_command_range": [
+        0.0,
+        1.0
+      ],
+      "suggested_hardware_joint": "LEAP_or_Shadow_little_flexion",
+      "max_velocity_rad_s": 1.8,
+      "pressure_target_limit_n": 4.0,
+      "emergency_stop_condition": "slip_mm > 5.0 or pressure_target_n > 4.0 or command_nan"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "project": "DexHand Lab",
+  "tactile_channels": 5,
+  "fingertip_streams_present": true,
+  "mean_contact_confidence": 0.90888,
+  "mean_friction_margin": 0.59464,
+  "max_shear_slip_mm": 3.60795,
+  "slip_recovery_success": true,
+  "contact_source": "mujoco_contact_parser_and_controller_pressure_proxy",
+  "honest_note": "Forces are deterministic MuJoCo/contact-controller proxies, not physical tactile sensor readings."
+}

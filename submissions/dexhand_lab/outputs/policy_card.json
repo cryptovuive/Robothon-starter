@@ -5,7 +5,10 @@
   "learned_policy": false,
   "camera_vision": false,
   "hybrid_carry_used": true,
+  "hybrid_cap_rotation_used": true,
   "hybrid_carry_condition": "only after stable_grasp_verified and required finger contacts are active",
+  "cap_rotation_policy": "224 degree tactile-inspired minimum-jerk twist after five-finger contact verification",
+  "tactile_controller": "five-fingertip MuJoCo contact parser plus controller pressure proxy",
   "no_snap_policy": {
     "object_moves_before_stability_verify": false,
     "attach_before_verification_allowed": false,
@@ -37,6 +40,7 @@
   ],
   "grasp_primitives": [
     "CAPSULE_CENTER_SUPPORT_GRASP",
+    "CAP_KNOB_ROTATION_224",
     "CONTROLLED_RELEASE",
     "INDEX_FINGERTIP_PRESS",
     "IN_HAND_ROTATION",

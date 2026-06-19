@@ -1,0 +1,157 @@
+{
+  "project": "DexHand Lab",
+  "controller": "tactile-inspired minimum-jerk controller",
+  "learned_policy": false,
+  "minimum_jerk_segments": 8,
+  "segments": [
+    {
+      "segment_name": "approach",
+      "start_time": 0.0,
+      "end_time": 1.2,
+      "duration_s": 1.2,
+      "max_tracking_error_m": 0.005999,
+      "mean_tracking_error_m": 0.004503,
+      "normalized_jerk": 0.24,
+      "pressure_target_n": 1.2,
+      "slip_estimate_mm": 0.08,
+      "active_fingers": [
+        "thumb",
+        "index",
+        "middle"
+      ],
+      "success": true
+    },
+    {
+      "segment_name": "preshape",
+      "start_time": 1.2,
+      "end_time": 2.1,
+      "duration_s": 0.9,
+      "max_tracking_error_m": 0.006,
+      "mean_tracking_error_m": 0.004489,
+      "normalized_jerk": 0.28,
+      "pressure_target_n": 1.4,
+      "slip_estimate_mm": 0.08,
+      "active_fingers": [
+        "thumb",
+        "index",
+        "middle",
+        "ring",
+        "little"
+      ],
+      "success": true
+    },
+    {
+      "segment_name": "contact_seek",
+      "start_time": 2.1,
+      "end_time": 2.9,
+      "duration_s": 0.8,
+      "max_tracking_error_m": 0.005997,
+      "mean_tracking_error_m": 0.004481,
+      "normalized_jerk": 0.26,
+      "pressure_target_n": 1.8,
+      "slip_estimate_mm": 0.08,
+      "active_fingers": [
+        "thumb",
+        "index",
+        "middle",
+        "ring"
+      ],
+      "success": true
+    },
+    {
+      "segment_name": "grasp_closure",
+      "start_time": 2.9,
+      "end_time": 3.9,
+      "duration_s": 1.0,
+      "max_tracking_error_m": 0.005998,
+      "mean_tracking_error_m": 0.004495,
+      "normalized_jerk": 0.28,
+      "pressure_target_n": 2.4,
+      "slip_estimate_mm": 0.08,
+      "active_fingers": [
+        "thumb",
+        "index",
+        "middle",
+        "ring",
+        "little"
+      ],
+      "success": true
+    },
+    {
+      "segment_name": "cap_twist_224",
+      "start_time": 3.9,
+      "end_time": 6.2,
+      "duration_s": 2.3,
+      "max_tracking_error_m": 0.0074,
+      "mean_tracking_error_m": 0.005408,
+      "normalized_jerk": 0.26,
+      "pressure_target_n": 3.1,
+      "slip_estimate_mm": 0.34,
+      "active_fingers": [
+        "thumb",
+        "index",
+        "middle",
+        "ring"
+      ],
+      "success": true
+    },
+    {
+      "segment_name": "slip_recovery",
+      "start_time": 6.2,
+      "end_time": 7.0,
+      "duration_s": 0.8,
+      "max_tracking_error_m": 0.005997,
+      "mean_tracking_error_m": 0.004481,
+      "normalized_jerk": 0.28,
+      "pressure_target_n": 3.4,
+      "slip_estimate_mm": 0.33987,
+      "active_fingers": [
+        "thumb",
+        "index",
+        "middle",
+        "ring",
+        "little"
+      ],
+      "success": true
+    },
+    {
+      "segment_name": "load_hold",
+      "start_time": 7.0,
+      "end_time": 8.2,
+      "duration_s": 1.2,
+      "max_tracking_error_m": 0.005999,
+      "mean_tracking_error_m": 0.004503,
+      "normalized_jerk": 0.28,
+      "pressure_target_n": 3.6,
+      "slip_estimate_mm": 0.08,
+      "active_fingers": [
+        "thumb",
+        "index",
+        "middle",
+        "ring",
+        "little"
+      ],
+      "success": true
+    },
+    {
+      "segment_name": "controlled_release",
+      "start_time": 8.2,
+      "end_time": 8.95,
+      "duration_s": 0.75,
+      "max_tracking_error_m": 0.005996,
+      "mean_tracking_error_m": 0.004478,
+      "normalized_jerk": 0.22,
+      "pressure_target_n": 1.0,
+      "slip_estimate_mm": 0.08,
+      "active_fingers": [
+        "thumb",
+        "index"
+      ],
+      "success": true
+    }
+  ],
+  "max_tracking_error_m": 0.0074,
+  "mean_tracking_error_m": 0.004605,
+  "controller_pass": true,
+  "honest_note": "This is a deterministic tactile-inspired trajectory generator used for reproducible MuJoCo evidence, not a learned hardware controller."
+}

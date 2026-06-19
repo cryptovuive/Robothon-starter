@@ -1,0 +1,12 @@
+{
+  "project": "DexHand Lab",
+  "audit_type": "simulation_to_hardware_replay_safety_audit",
+  "hardware_audit_pass": true,
+  "range_violations": 0,
+  "rate_violations": 0,
+  "pressure_violations": 0,
+  "command_stream_rate_hz": 50,
+  "quantization_safety": "normalized commands are bounded to [0, 1]",
+  "emergency_stop_trigger_present": true,
+  "honest_note": "This audit checks replay safety for a possible LEAP/Shadow-style hand. It does not claim real hardware execution."
+}

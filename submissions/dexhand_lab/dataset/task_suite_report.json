@@ -1,0 +1,113 @@
+{
+  "project": "DexHand Lab",
+  "suite": "20-gate deterministic dexterity verification",
+  "gate_count": 20,
+  "gates_passed": 20,
+  "success_rate": 1.0,
+  "failed_gates": [],
+  "max_pose_error_m": 0.02395,
+  "max_rotation_error_deg": 0.0,
+  "final_task_success": true,
+  "gates": [
+    {
+      "gate": 1,
+      "name": "hand_skeleton_valid",
+      "passed": true
+    },
+    {
+      "gate": 2,
+      "name": "five_fingers_present",
+      "passed": true
+    },
+    {
+      "gate": 3,
+      "name": "thumb_opposition_visible",
+      "passed": true
+    },
+    {
+      "gate": 4,
+      "name": "fingertip_pads_present",
+      "passed": true
+    },
+    {
+      "gate": 5,
+      "name": "sphere_classified",
+      "passed": true
+    },
+    {
+      "gate": 6,
+      "name": "sphere_enclosure_grasp_success",
+      "passed": true
+    },
+    {
+      "gate": 7,
+      "name": "cube_classified",
+      "passed": true
+    },
+    {
+      "gate": 8,
+      "name": "cube_opposing_face_grasp_success",
+      "passed": true
+    },
+    {
+      "gate": 9,
+      "name": "cylinder_classified",
+      "passed": true
+    },
+    {
+      "gate": 10,
+      "name": "cylinder_side_body_grasp_success",
+      "passed": true
+    },
+    {
+      "gate": 11,
+      "name": "top_down_cylinder_grasp_count_zero",
+      "passed": true
+    },
+    {
+      "gate": 12,
+      "name": "stylus_classified",
+      "passed": true
+    },
+    {
+      "gate": 13,
+      "name": "stylus_tripod_success",
+      "passed": true
+    },
+    {
+      "gate": 14,
+      "name": "checkpoint_touch_success",
+      "passed": true
+    },
+    {
+      "gate": 15,
+      "name": "index_only_button_press_success",
+      "passed": true
+    },
+    {
+      "gate": 16,
+      "name": "cap_object_classified",
+      "passed": true
+    },
+    {
+      "gate": 17,
+      "name": "cap_rotation_224_success",
+      "passed": true
+    },
+    {
+      "gate": 18,
+      "name": "slip_recovery_success",
+      "passed": true
+    },
+    {
+      "gate": 19,
+      "name": "load_hold_success",
+      "passed": true
+    },
+    {
+      "gate": 20,
+      "name": "no_snap_verified",
+      "passed": true
+    }
+  ]
+}

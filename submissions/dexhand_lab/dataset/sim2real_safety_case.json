@@ -1,0 +1,8 @@
+{
+  "project": "DexHand Lab",
+  "safety_case": "bounded replay commands with pressure/slip emergency stop",
+  "real_hardware_trial": false,
+  "maximum_pressure_target_n": 4.0,
+  "maximum_allowed_slip_mm": 5.0,
+  "operator_stop_required": true
+}

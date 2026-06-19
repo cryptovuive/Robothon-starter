@@ -184,6 +184,51 @@
       "recommended_grasp_type": "LATERAL_CYLINDER_BODY_GRASP"
     },
     {
+      "object_name": "cap_knob",
+      "object_type": "cap_knob",
+      "object_center": [
+        0.36,
+        0.185,
+        0.445
+      ],
+      "object_orientation": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "object_size": [
+        0.038,
+        0.026
+      ],
+      "face_normals": [],
+      "radius": 0.038,
+      "long_axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "centerline": [
+        [
+          0.36,
+          0.185,
+          0.419
+        ],
+        [
+          0.36,
+          0.185,
+          0.471
+        ]
+      ],
+      "grasp_affordance_regions": {
+        "thumb": "cap side counterhold",
+        "index": "tangential marker side push",
+        "middle_ring": "opposing support arc",
+        "little": "optional lower support"
+      },
+      "recommended_grasp_type": "CAP_KNOB_ROTATION_224"
+    },
+    {
       "object_name": "stylus_tool",
       "object_type": "stylus",
       "object_center": [
@@ -296,6 +341,7 @@
   ],
   "grasp_types": [
     "CAPSULE_CENTER_SUPPORT_GRASP",
+    "CAP_KNOB_ROTATION_224",
     "CONTROLLED_RELEASE",
     "INDEX_FINGERTIP_PRESS",
     "IN_HAND_ROTATION",
@@ -312,6 +358,8 @@
     "CUBE_FACE_GRASP",
     "CYLINDER_SIDE_BODY_GRASP",
     "IN_HAND_ROTATION",
+    "CAP_KNOB_ROTATION_224",
+    "SLIP_RECOVERY_LOAD_HOLD",
     "STYLUS_TRIPOD_GRASP",
     "CHECKPOINT_TOUCH",
     "INDEX_BUTTON_PRESS"
@@ -325,16 +373,19 @@
     "tripod_tool_success": true,
     "checkpoint_touch_success": true,
     "button_press_success": true,
-    "index_only_button_press_success": true
+    "index_only_button_press_success": true,
+    "cap_rotation_success": true,
+    "slip_recovery_success": true,
+    "load_hold_success": true
   },
   "overall_task_success": true,
-  "average_active_fingers": 2.00891,
-  "average_grasp_stability_score": 0.57936,
-  "average_multi_side_contact_score": 0.53807,
+  "average_active_fingers": 2.24705,
+  "average_grasp_stability_score": 0.61598,
+  "average_multi_side_contact_score": 0.55484,
   "object_center_between_fingers_rate": 1.0,
   "average_grasp_centroid_error_m": 0.02395,
   "one_face_only_contact_count": 0,
-  "independent_finger_motion_score": 0.78058,
+  "independent_finger_motion_score": 0.75706,
   "thumb_opposition_score": 0.92,
   "object_snap_events": 0,
   "average_snap_distance_m": 0.0,
@@ -344,8 +395,41 @@
   "top_down_cylinder_grasp_count": 0,
   "achieved_rotation_deg": 90.0,
   "rotation_error_deg": 0.0,
-  "finger_gait_count": 2,
+  "finger_gait_count": 4,
   "stable_hold_during_rotation": true,
+  "cap_rotation_target_deg": 224.0,
+  "cap_rotation_achieved_deg": 224.0,
+  "cap_rotation_error_deg": 0.0,
+  "cap_rotation_success": true,
+  "cap_marker_visible": true,
+  "cap_twist_active_fingers": [
+    "thumb",
+    "index",
+    "middle",
+    "ring"
+  ],
+  "cap_counterhold_fingers": [
+    "thumb",
+    "middle",
+    "ring"
+  ],
+  "cap_contact_balance_score": 1.0,
+  "cap_slip_mm": 0.34,
+  "cap_hybrid_rotation_used": true,
+  "cap_rotation_stable_hold": true,
+  "min_active_fingers_during_cap_rotation": 2,
+  "cap_twist_phase_count": 4,
+  "final_slip_mm": 0.28,
+  "max_slip_mm": 0.46,
+  "slip_recovery_success": true,
+  "load_hold_x": 9.0,
+  "load_hold_success": true,
+  "object_drop_count": 0,
+  "tactile_channels": 5,
+  "mean_contact_confidence": 0.40663,
+  "mean_friction_margin": 0.91023,
+  "average_active_fingers_dexterous_grasps": 4.21198,
+  "average_multi_side_contact_score_dexterous_grasps": 0.938,
   "tripod_tool_success": true,
   "checkpoint_touch_success": true,
   "index_only_button_press_success": true,
@@ -357,6 +441,6 @@
     "Hybrid carry and rotation are used only after stable grasp verification to keep the demo reproducible.",
     "Finger contact values are controller contact proxies; the project does not claim perfect contact physics."
   ],
-  "trajectory_steps": 786,
+  "trajectory_steps": 1016,
   "frames_saved": 0
 }

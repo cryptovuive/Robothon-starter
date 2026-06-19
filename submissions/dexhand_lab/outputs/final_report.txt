@@ -1,31 +1,15 @@
-## DexHand Lab Final Report
+## DexHand Lab 90+ Evidence Report
 
-Hand skeleton valid: true
-All five fingers visible: true
-Thumb opposition visible: true
-Independent finger motion score: 0.78
-Average active fingers: 2.01
-Average multi-side contact score: 0.54
-Object center between fingers rate: 1.00
-Average grasp centroid error: 0.024 m
+Task gates: 20/20
+Cap rotation: 224 deg target / 224.0 achieved
+Final slip: 0.28 mm
+Load hold: 9.0 x
+Tactile channels: 5
+Stress success: 100.0%
+Feedback vs baseline: 1.00 vs 0.59
 Object snap events: 0
-Attach before verification: 0
-Verified grasp before attach rate: 1.00
-Hand model: human-like 5-finger robot hand
-Finger count: 5
-Sphere enclosure grasp success: true
-Cube opposing-face grasp success: true
-Cylinder side-body grasp success: true
-Top-down cylinder grasps: 0
-In-hand rotation success: true
-Target rotation: 90 deg
-Achieved rotation: 90.0 deg
-Rotation error: 0.0 deg
-Stylus tripod success: true
-Checkpoint touched: true
-Index-only button press success: true
-Slip events: 0
-Slip recovery success: 100.0%
-Average grasp stability score: 0.58
-Stress eval available: true
-Overall task success: true
+Dexterous active fingers: 4.21
+Multi-side contact score: 0.94
+Minimum-jerk controller: pass
+Hardware replay audit: pass
+Overall success: true

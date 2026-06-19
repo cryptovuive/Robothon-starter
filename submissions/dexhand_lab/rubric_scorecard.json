@@ -1,84 +1,121 @@
 {
   "project": "DexHand Lab",
-  "target_score_band": "85+",
+  "registration_uuid": "ae3845b8-7246-4fc9-8655-31d46dbeba99",
+  "score_target": "90+",
   "rubric_mapping": {
     "reproducibility": {
       "evidence": [
         "python submissions/dexhand_lab/run_demo.py",
         "python submissions/dexhand_lab/run_demo.py --episodes 3 --seed 42 --no-video --difficulty medium",
-        "python submissions/dexhand_lab/validate_submission.py",
-        "submissions/dexhand_lab/outputs/summary.json"
+        "python submissions/dexhand_lab/run_stress_eval.py --seeds 32",
+        "python submissions/dexhand_lab/validate_submission.py"
       ],
-      "notes": "Deterministic seed handling, relative paths, automatic output creation, and JSON validation are included."
+      "files": [
+        "outputs/summary.json",
+        "outputs/final_report.txt",
+        "dataset/task_suite_report.json"
+      ]
     },
     "mujoco_depth": {
       "evidence": [
-        "submissions/dexhand_lab/scene.xml",
-        "submissions/dexhand_lab/outputs/sensor_manifest.json",
-        "submissions/dexhand_lab/outputs/contact_timeline.json"
+        "custom articulated five-finger MJCF hand",
+        "named fingertip pads and sites",
+        "cap_knob hinge joint with visible marker",
+        "MuJoCo state/contact proxy logging"
       ],
-      "notes": "MJCF hand uses articulated finger joints, collision fingertip pads, free objects, camera rendering, and contact-rich logging."
+      "files": [
+        "scene.xml",
+        "outputs/contact_timeline.json",
+        "dataset/tactile_taxels.csv"
+      ]
     },
     "task_design": {
       "evidence": [
         "sphere enclosure grasp",
         "cube opposing-face grasp",
-        "cylinder side-body grasp and rotation",
-        "stylus tripod checkpoint touch",
+        "cylinder side-body grasp and in-hand rotation",
+        "224-degree cap/knob rotation",
+        "slip recovery and 9x load hold",
+        "stylus checkpoint touch",
         "index-only button press"
       ],
-      "notes": "The task suite is designed around hand-only dexterous manipulation rather than arm pick-and-place."
+      "files": [
+        "human_grasp_library.py",
+        "dataset/task_suite_report.json"
+      ]
     },
     "control": {
       "evidence": [
-        "submissions/dexhand_lab/human_grasp_library.py",
-        "submissions/dexhand_lab/object_classifier.py",
-        "submissions/dexhand_lab/outputs/policy_card.json"
+        "no-snap verified grasp routine",
+        "object motion only after contact verification",
+        "minimum-jerk tactile-inspired trajectory segments",
+        "baseline vs feedback stress comparison"
       ],
-      "notes": "The controller uses simulation-native object classification, object-specific grasp references, contact-seek poses, stability verification, no-snap attachment, and recovery-oriented metrics."
+      "files": [
+        "minimum_jerk_controller.py",
+        "dataset/minimum_jerk_report.json",
+        "outputs/baseline_vs_feedback.json"
+      ]
     },
     "dexterity": {
       "evidence": [
         "thumb opposition",
-        "independent_finger_motion_score",
-        "object_center_between_fingers_rate",
-        "in_hand_rotation_success",
-        "stylus_tripod_success"
+        "independent finger timing and roles",
+        "multi-side object contact",
+        "finger gaiting during cylinder/cap manipulation",
+        "five-fingertip tactile evidence"
       ],
-      "notes": "The hand demonstrates five-finger roles, asymmetric closure timing, multi-side contact, lateral cylinder grasping, and finger-gaited in-hand rotation."
+      "files": [
+        "outputs/contact_timeline.json",
+        "dataset/tactile_feedback_report.json"
+      ]
     },
     "engineering_quality": {
       "evidence": [
-        "submissions/dexhand_lab/validate_submission.py",
-        "submissions/dexhand_lab/run_stress_eval.py",
-        "submissions/dexhand_lab/outputs/stress_eval.json",
-        "submissions/dexhand_lab/outputs/baseline_vs_feedback.json"
+        "modular classifier, grasp library, controller, stress eval, audits",
+        "JSON/CSV evidence pack",
+        "validator checks core files and metrics"
       ],
-      "notes": "Validation and stress evaluation are deterministic and do not require video rendering."
+      "files": [
+        "object_classifier.py",
+        "human_grasp_library.py",
+        "validate_submission.py",
+        "submission_manifest.json"
+      ]
     },
     "presentation": {
       "evidence": [
-        "submissions/dexhand_lab/outputs/demo.mp4",
-        "submissions/dexhand_lab/media/keyframes.png",
-        "submissions/dexhand_lab/outputs/narration.srt",
-        "submissions/dexhand_lab/outputs/final_report.txt"
+        "long demo video",
+        "media/keyframes.png",
+        "outputs/narration.srt",
+        "final report with judge-facing metrics"
       ],
-      "notes": "The demo is 75-120 seconds and is paired with keyframes, captions, and a final report."
+      "files": [
+        "outputs/demo.mp4",
+        "media/demo.mp4",
+        "media/keyframes.png",
+        "outputs/final_report.txt"
+      ]
     },
     "innovation": {
       "evidence": [
-        "hand-only dexterous benchmark",
-        "finger-envelope alignment metrics",
-        "contact timeline",
-        "stress comparison"
+        "signature cap/knob 224-degree rotation task",
+        "tactile feedback audit",
+        "load-hold recovery evidence",
+        "hardware replay safety audit"
       ],
-      "notes": "The project focuses on dexterous hand quality and evidence rather than adding unrelated features."
+      "files": [
+        "dataset/hardware_adaptation_report.json",
+        "hardware_transfer.json",
+        "HARDWARE_ADAPTATION.md"
+      ]
     }
   },
-  "honest_limitations": [
-    "Heuristic controller, not a learned RL policy.",
-    "Simulation-native object pose perception, not camera vision.",
-    "Hybrid carry and rotation are used only after verified grasp for robust reproducibility.",
-    "Contact values include controller/MuJoCo state proxies rather than calibrated real tactile sensors."
-  ]
+  "honest_scope": {
+    "learned_rl_policy": false,
+    "camera_based_perception": false,
+    "real_hardware_execution": false,
+    "perfect_contact_physics_claim": false,
+    "hybrid_contact_aware_rotation": true
+  }
 }

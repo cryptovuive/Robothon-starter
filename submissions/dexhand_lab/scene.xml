@@ -27,6 +27,9 @@
     <material name="stylus_mat" rgba="0.95 0.78 0.20 1"/>
     <material name="button_mat" rgba="0.06 0.78 0.24 1"/>
     <material name="checkpoint_mat" rgba="0.58 0.20 0.88 1"/>
+    <material name="cap_base_mat" rgba="0.18 0.18 0.20 1"/>
+    <material name="cap_knob_mat" rgba="0.82 0.86 0.90 1"/>
+    <material name="cap_marker_mat" rgba="1.00 0.12 0.05 1"/>
   </asset>
 
   <worldbody>
@@ -80,6 +83,17 @@
       <geom name="checkpoint_base_geom" type="box" size="0.046 0.046 0.009" rgba="0.10 0.11 0.12 1"/>
       <geom name="checkpoint_geom" type="cylinder" pos="0 0 0.020" size="0.024 0.008" material="checkpoint_mat"/>
       <site name="checkpoint_site" pos="0 0 0.038" size="0.010" rgba="0.7 0.3 1 1"/>
+    </body>
+
+    <body name="cap_knob_station" pos="0.36 0.185 0.405">
+      <geom name="cap_knob_base_geom" type="cylinder" size="0.052 0.018" material="cap_base_mat"/>
+      <body name="cap_knob" pos="0 0 0.040">
+        <joint name="cap_knob_joint" type="hinge" axis="0 0 1" range="-6.2832 6.2832" damping="2.5"/>
+        <geom name="cap_knob_geom" type="cylinder" size="0.038 0.026" material="cap_knob_mat" mass="0.030"/>
+        <geom name="cap_marker_geom" type="box" pos="0.030 0 0.028" size="0.010 0.004 0.006" material="cap_marker_mat"/>
+        <site name="cap_marker_site" pos="0.038 0 0.030" size="0.006" rgba="1 0.2 0.1 1"/>
+        <site name="cap_center_site" pos="0 0 0.028" size="0.007" rgba="0.2 0.6 1 1"/>
+      </body>
     </body>
 
     <body name="palm_body" pos="0 0 0.620">

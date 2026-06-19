@@ -1,52 +1,71 @@
 {
-  "project_name": "DexHand Lab",
-  "submission_folder": "submissions/dexhand_lab",
-  "main_command": "python submissions/dexhand_lab/run_demo.py",
-  "evaluation_command": "python submissions/dexhand_lab/run_demo.py --episodes 3 --seed 42 --no-video --difficulty medium",
-  "stress_eval_command": "python submissions/dexhand_lab/run_stress_eval.py --seeds 32",
-  "validation_command": "python submissions/dexhand_lab/validate_submission.py",
-  "robot_platform": "Human-like 5-finger MuJoCo hand built from stable primitives",
-  "primary_files": [
+  "project": "DexHand Lab",
+  "registration_uuid": "ae3845b8-7246-4fc9-8655-31d46dbeba99",
+  "final_submission_folder": "submissions/dexhand_lab",
+  "main_commands": [
+    "python submissions/dexhand_lab/run_demo.py",
+    "python submissions/dexhand_lab/run_demo.py --episodes 3 --seed 42 --no-video --difficulty medium",
+    "python submissions/dexhand_lab/run_stress_eval.py --seeds 32",
+    "python submissions/dexhand_lab/validate_submission.py"
+  ],
+  "source_files": [
     "run_demo.py",
     "scene.xml",
     "human_grasp_library.py",
     "object_classifier.py",
     "dexhand_controller.py",
+    "grasp_taxonomy.py",
     "run_stress_eval.py",
-    "validate_submission.py",
+    "arena_task_suite.py",
+    "minimum_jerk_controller.py",
+    "contact_feedback_audit.py",
+    "hardware_adaptation_audit.py",
+    "validate_submission.py"
+  ],
+  "documentation": [
     "README.md",
     "JUDGE_BRIEF.md",
-    "rubric_scorecard.json"
+    "HARDWARE_ADAPTATION.md",
+    "rubric_scorecard.json",
+    "submission_manifest.json",
+    "registration.json"
   ],
-  "generated_outputs": [
+  "expected_outputs": [
     "outputs/demo.mp4",
+    "media/demo.mp4",
+    "media/keyframes.png",
     "outputs/summary.json",
-    "outputs/trajectory.json",
     "outputs/contact_timeline.json",
     "outputs/final_report.txt",
-    "outputs/policy_card.json",
-    "outputs/sensor_manifest.json",
+    "outputs/narration.srt",
     "outputs/stress_eval.json",
     "outputs/baseline_vs_feedback.json",
-    "outputs/narration.srt",
-    "media/keyframes.png",
-    "outputs/episodes/episode_000/trajectory.json",
-    "outputs/episodes/episode_000/metadata.json"
+    "outputs/stress_eval_summary.csv",
+    "dataset/task_suite_report.json",
+    "dataset/task_suite.csv",
+    "dataset/tactile_feedback_report.json",
+    "dataset/tactile_taxels.csv",
+    "dataset/minimum_jerk_report.json",
+    "dataset/minimum_jerk_trace.csv",
+    "dataset/stress_eval.json",
+    "dataset/hardware_adaptation_report.json",
+    "dataset/hardware_command_stream.csv",
+    "dataset/sim2real_safety_case.json",
+    "hardware_transfer.json"
   ],
-  "core_claims": {
-    "five_finger_hand": true,
-    "thumb_opposition": true,
-    "object_specific_grasps": true,
-    "no_snap_verified_grasp": true,
-    "in_hand_rotation": true,
-    "stylus_tripod_grasp": true,
-    "index_only_button_press": true,
-    "stress_evaluation": true
-  },
-  "limitations": [
-    "No learned policy weights are included.",
-    "No real camera perception is claimed.",
-    "No real-world deployment is claimed.",
-    "Hybrid object carry is used only after stable grasp verification."
+  "headline_metrics": [
+    "cap_rotation_target_deg = 224",
+    "cap_rotation_achieved_deg >= 214",
+    "tactile_channels = 5",
+    "object_snap_events = 0",
+    "load_hold_x >= 5",
+    "task_gate_success_rate >= 0.9",
+    "feedback_success_rate >= baseline_success_rate"
+  ],
+  "honest_limitations": [
+    "simulation-native object pose perception",
+    "heuristic/contact-aware controller rather than learned RL",
+    "tactile values are MuJoCo/contact-controller proxies",
+    "hardware audit is replay validation, not a physical trial"
   ]
 }

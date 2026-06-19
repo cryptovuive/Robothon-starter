@@ -31,6 +31,7 @@ OBJECT_TYPE_BY_NAME = {
     "capsule_object": "capsule",
     "stylus_tool": "stylus",
     "button": "button",
+    "cap_knob": "cap_knob",
 }
 
 RECOMMENDED_GRASP = {
@@ -42,6 +43,7 @@ RECOMMENDED_GRASP = {
     "capsule": "CAPSULE_CENTER_SUPPORT_GRASP",
     "stylus": "TRIPOD_PRECISION_GRASP",
     "button": "INDEX_FINGERTIP_PRESS",
+    "cap_knob": "CAP_KNOB_ROTATION_224",
 }
 
 
@@ -121,6 +123,22 @@ def classify_object(model, data, mujoco, object_name: str) -> ObjectAffordance:
         centerline = None
         face_normals = [[0, 0, 1]]
         regions = {"index": "button center"}
+    elif object_type == "cap_knob":
+        radius = 0.038
+        half_height = 0.026
+        size = [radius, half_height]
+        long_axis = [0.0, 0.0, 1.0]
+        centerline = [
+            (center - np.array([0.0, 0.0, half_height])).round(5).tolist(),
+            (center + np.array([0.0, 0.0, half_height])).round(5).tolist(),
+        ]
+        face_normals = []
+        regions = {
+            "thumb": "cap side counterhold",
+            "index": "tangential marker side push",
+            "middle_ring": "opposing support arc",
+            "little": "optional lower support",
+        }
     else:
         radius = None
         size = []

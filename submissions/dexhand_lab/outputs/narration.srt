@@ -15,9 +15,13 @@ The cube is held by opposing face contacts rather than one face or a corner gras
 The cylinder is grasped around the side of the body and rotated in-hand.
 
 5
-00:01:00,000 --> 00:01:18,000
-The stylus is picked with a thumb-index-middle tripod grasp and used to touch the checkpoint.
+00:01:00,000 --> 00:01:25,000
+The cap knob task verifies five-finger contact, twists a visible marker 224 degrees, and runs slip recovery plus load hold.
 
 6
-00:01:18,000 --> 00:01:30,000
+00:01:25,000 --> 00:01:43,000
+The stylus is picked with a thumb-index-middle tripod grasp and used to touch the checkpoint.
+
+7
+00:01:43,000 --> 00:01:55,000
 The button is pressed with the index fingertip only, then the hand returns to the final report pose.
